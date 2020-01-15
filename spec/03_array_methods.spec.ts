@@ -63,4 +63,63 @@ describe('two loops you might use but probably wont', () => {
 
         expect(total).toBe(45);
     });
+
+    it('using reduce', () => {
+        const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+        let total = numbers.reduce((s, n) => s + n);
+        expect(total).toBe(45);
+        total = numbers.reduce((s, n) => s + n, 100);
+        expect(total).toBe(145);
+    });
+
+    describe('an example', () => {
+        it('the example', () => {
+            // given a cart
+            interface CArtItem {
+                description: string;
+                qty: number;
+                price: number;
+            }
+
+            const cart: CartItem[] = [
+                { description: 'Eggs', qty: 3, price: 2.37 },
+                { description: 'Bread', qty: 2, price: 3.50 },
+                { description: 'Beer', qty: 6, price: 7.50 }
+            ];
+
+            // I want to know the total quantity and total price
+
+            interface Shippinginfo {
+                totalQty: number;
+                totalPrioce: number;
+            }
+
+            const starter: ShippingInfo = {
+                totalQty: 0,
+                totalPrice: 0,
+            };
+            const result = cart.reduce((s: ShippingInfo, n: CartItem) => {
+                return {
+                    totalQty: s.totalQty += n.qty,
+                    totalPrice: s.totalPrice += n.price
+                };
+            }, starter);
+
+            // 0+ 3 = 3
+            // 3+2 = 5
+            // 5 + 6 = 11
+
+            // 0 + 2.37 = 2.37
+            // 2.37 + 3.50 = 5.87
+            // 5.87 + 7.50 = 13.37
+            expect(result.totalPrice).toBeCloseTo(13.37, 2);
+            expect(result.totalQty).toBe(11);
+
+
+
+
+        });
+    });
 });
+
+})

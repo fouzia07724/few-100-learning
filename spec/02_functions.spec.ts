@@ -12,7 +12,7 @@ describe('functions', () => {
             }
 
             // 2. anonymous Function
-            const subtract = function (a: number, b: number) {
+            const subtract = function(a: number, b: number) {
                 return a - b;
             };
 
