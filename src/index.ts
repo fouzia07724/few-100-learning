@@ -22,4 +22,11 @@ function handleAddClick() {
     const b = num2.valueAsNumber;
     const sum = add(a, b);
     answer.innerText = sum.toString();
+    num1.focus();
 }
+
+// your extra credit homework
+// Make it so that it does not suck so far
+// NaN === Nan
+// isNaN(NaN) it evaluates to true
+// isNaN(12) it evaluates to false
