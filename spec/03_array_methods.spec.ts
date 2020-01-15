@@ -1,4 +1,4 @@
-import { isEven, identity } from './utils';
+import { isEven, identity, IHaveAMessage } from './utils';
 
 describe('array methods', () => {
     const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9];
@@ -115,10 +115,30 @@ describe('two loops you might use but probably wont', () => {
             expect(result.totalPrice).toBeCloseTo(13.37, 2);
             expect(result.totalQty).toBe(11);
 
+        });
 
+        describe('Strutural Typeing', () => {
+            it('an example...', () => {
 
+                function logIt(thingy: IHaveAMessage): void {
+                    console.log(thingy.message + ' from: ' + thingy.from);
+                }
+
+                const call = {
+                    from: 'Mom',
+                    message: 'Call me.',
+                    time: '4:00 PM'
+                };
+
+                logIt(call); // call should have the same structure as the interface IHaveAMessage or extra
+
+                // logIt({ from: 'Joe', message: 'Tacos are ready', time: 'Noon'}) // If we call it a anonuymous object
+                // like a explit object call than the structure of the object has to be exactly the same
+
+            });
 
         });
+
     });
 });
 
